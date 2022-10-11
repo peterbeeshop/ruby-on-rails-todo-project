@@ -1,0 +1,32 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div  class="bg-[#ffffff] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] w-[768px] h-[150px] px-[40px] py-[20px] rounded-lg ">
+    <div>
+      <%= form.label :name, style: "display: block", class:"text-lg font-medium text-[#111827] mb-2" %>
+      <%= form.text_field :name, class:"border border-[#D1D5DB] rounded-md pl-4 w-[100%] h-[30px] shadow-[0px_1px_2px_rgba(0,0,0,0.5)]" %>
+    </div>
+    <div class="flex justify-between items-center pt-3">
+      <div class="flex justify-between items-center">
+        <%= form.label :completed, class:"pr-4" %>
+        <%= form.check_box :completed %>
+        <%= form.number_field :list_id, id: :task_list_id, value:@list_id, type: :hidden%>
+        <%= form.number_field :user_id, id: :task_user_id, value:current_user.id, type: :hidden%>
+        <%= %>
+      </div>
+      <div>
+        <%= form.submit "Create",  class:'w-[100%] bg-[#4F46E5] h-[38px] px-3 rounded-md text-[#fff]' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

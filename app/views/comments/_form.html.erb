@@ -1,0 +1,28 @@
+<%= form_with(model: comment) do |form| %>
+  <% if comment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="bg-[#FFFFFF] w-[80%] h-[100px] px-4 rounded-lg pt-[20px] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] ">
+    <%= form.label :New_comment, style: "display: block", class:"text-lg text-[#111827] font-medium " %>
+    <div class="flex justify-between items-center ">
+      <%= form.text_field :name, class:"border border-[#D1D5DB] rounded-md pl-4 w-[70%] h-[30px] shadow-[0px_1px_2px_rgba(0,0,0,0.5)]" %>
+
+      <%= form.number_field :task_id, id: :comment_task_id, value:@task.id, type: :hidden%>
+      <%= form.number_field :user_id, id: :comment_user_id, value:current_user.id, type: :hidden%>
+      
+      <%= form.submit "Save", class:'w-[68px] bg-[#4F46E5] h-[38px] px-3 rounded-md text-[#fff]' %>
+    </div>
+  </div>
+  <!-- <p>current user_id: <%= current_user.id %> </p>
+  <p>task_id: <%= @task.id %> </p> -->
+ 
+<% end %>

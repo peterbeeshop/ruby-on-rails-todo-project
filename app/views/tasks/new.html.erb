@@ -1,0 +1,10 @@
+
+  <div class="bg-yellow-700 h-screen w-[70%] pt-5 pl-16 pr-5">
+      <div class="flex pt-4 items-center">
+        <%= image_tag 'arrow.png', class:"w-[18px] h-[14px] " %>
+        <%= link_to "Back to all tasks", :back, class:"text-lg font-medium pl-4" %>
+      </div>
+      <div class="pt-[70px]">
+        <%= render "form", task: @task %>
+      </div>
+  </div>

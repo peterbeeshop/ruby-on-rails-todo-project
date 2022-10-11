@@ -1,0 +1,11 @@
+<div class="flex justify-center w-[70%] items-center h-screen">
+
+  <div class="bg-[#ffffff] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] w-[300px] h-[300px] px-[40px] py-[32px] rounded-lg ">
+    <h1 class="font-extrabold text-3xl mb-4 text-center ">New list</h1>
+    <%= render "form", list: @list %>
+    <div class="pt-2 text-[ #374151] font-medium text-center ">
+      <%= link_to "back to homepage", root_path %>
+    </div>
+  </div>
+
+</div>

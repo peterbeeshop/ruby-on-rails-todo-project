@@ -1,0 +1,52 @@
+<div class="bg-yellow-700 h-screen w-[70%] pt-5 pl-16 pr-5 overflow-auto">
+  <div class="flex pt-4 mb-2 items-center">
+    <%= image_tag 'arrow.png', class:"w-[18px] h-[14px] " %>
+    <%= link_to "Back to all tasks", :back, class:"text-lg font-medium pl-4" %>
+  </div>
+
+  <h2 class=" mb-1 text-lg font-medium ">Pending</h2>
+  <div class="w-[80%] h-[126px] p-[24px] mb-3 bg-[#FFFFFF] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] rounded-md ">
+    <div class="w-[100%] flex items-center justify-between bg-[#F9FAFB] h-[78px] px-[24px] py-[20px] rounded-md ">
+      <section class="flex items-center">
+        <% if @task.completed %>
+          <input type="checkbox" checked>
+        <% else%>
+          <input type="checkbox" >
+        <% end %>
+        <% User.where(id: @task.user_id).each do |u| %>
+          <p class="pl-4 text-xs font-normal text-[#6B7280]">Created by: <%=u.name %> </p>
+        <% end %>
+        <p class="pl-2 pb-2 font-normal text-[#6B7280]">.</p>
+        <p class="pl-2 text-xs font-normal text-[#6B7280]">Comment <%= Comment.where(task_id: @task.id).count %></p>
+      </section>
+      <section>
+        <%= link_to "Edit", edit_task_path(@task), class:"rounded-md text-sm font-medium shadow-[0px_1px_2px_rgba(0,0,0,0.5)] w-[60px] h-[38px] text-[#374151] py-[9px] px-[17px] bg-[#ffffff] " %>
+      </section>
+    </div>
+  </div>
+
+  <div class="">
+    <% Comment.where(task_id: @task.id).each do |comment| %>
+      <div class="bg-[#FFFFFF] my-3 w-[80%] h-[100px] px-4 rounded-lg pt-[20px] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] ">
+        <div>
+          <% User.where(id: comment.user_id).each do |user| %>
+            <h2 class="text-lg text-[#111827] font-medium "><%= user.name %></h2>
+          <% end %>
+        </div>
+        <p class="font-normal text-sm text-[#6B7280] pt-2 "><%= comment.name %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div >
+    <%= render "comments/form", comment: @comment %>
+  </div>
+    
+</div>
+
+
+  <!-- <%= link_to "Edit this task", edit_task_path(@task) %> |
+      <%= link_to "Back to tasks", tasks_path %>
+      
+      <%= button_to "Destroy this task", @task, method: :delete %> -->
+

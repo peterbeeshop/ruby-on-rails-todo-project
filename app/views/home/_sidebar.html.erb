@@ -1,0 +1,32 @@
+
+<div class="w-[30%] h-full bg-[#FFFFFF] ">
+    <div class="flex justify-center items-center h-[56px]">
+        <%= link_to image_tag('logo.png'), root_path, class:"w-[33px] " %>
+    </div>
+    <div class=" flex justify-between items-center border-b border-[#E5E7EB] py-2">
+        <div class="flex">
+            <%= image_tag 'profilePic.jpeg', class:"w-[43px]  mx-2 " %>
+            <div>
+                <p class="text-base font-medium text-[#374151] "><%= current_user.name %></p>
+                <p class="text-sm font-medium text-[#6B7280] "><%= current_user.email %></p>
+            </div> 
+        </div>
+        <div class="pr-4">
+            <%= image_tag 'Icon.png' %>
+        </div>
+    </div>
+
+    <div id="lists">
+        <% List.all.each do |list| %>
+        <div class="bg-red-400 h-[40px] my-3 px-3 flex justify-between items-center ">
+            <%= link_to list.name,list  %>
+            <%= button_to(image_tag('delete.png'), list, method: :delete, class:"w-[20px]  ")%>
+        </div>
+        <% end %>
+    </div>
+
+    <div class="fixed bottom-0 w-[30%] flex justify-between items-center h-[60px] pb-[12px] pr-4 pl-24 ">
+        <%= button_to 'Sign out', destroy_user_session_path,:method => 'delete', class:"text-[#6B7280]" %>
+        <%= link_to "Add new list", new_list_path, class:"h-[50px] w-[145px] bg-[#4F46E5] rounded-md text-white flex justify-center items-center" %>
+    </div>
+</div>

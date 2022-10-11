@@ -1,0 +1,36 @@
+<div class="flex justify-center items-center flex-col w-[100%] min-h-screen">
+  <%= image_tag 'logo.png', class:"mb-4 mt-6" %>
+  <h1 class="font-extrabold text-3xl mb-4 ">Create your account</h1>
+
+  <div class="bg-[#ffffff] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] w-[448px] h-[416px] px-[40px] py-[32px] rounded-lg ">
+    <%= form_for(resource, as: resource_name, url:registration_path(resource_name), data: {turbo: false}) do |f| %>
+
+    <div class="field mb-6">
+      <%= f.label :Full_name, class:"text-[#374151] pb-[2px]" %><br />
+      <%= f.text_field :name, autofocus: true,class:"border border-[#D1D5DB] rounded-md w-[100%] h-[40px] pl-4 shadow-[0px_1px_2px_rgba(0,0,0,0.5)]" %>
+    </div>
+
+    <div class="field mb-6">
+      <%= f.label :Email_address, class:"text-[#374151] pb-[2px]" %><br />
+      <%= f.email_field :email, autocomplete: "email", class:"border border-[#D1D5DB] rounded-md pl-4 w-[100%] h-[40px] shadow-[0px_1px_2px_rgba(0,0,0,0.5)]" %>
+    </div>
+
+    <div class="field mb-6">
+      <%= f.label :password, class:"text-[#374151] pb-[2px]" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password",class:"border border-[#D1D5DB] rounded-md pl-4 w-[100%] h-[40px] shadow-[0px_1px_2px_rgba(0,0,0,0.5)]" %>
+    </div>
+
+    <!-- <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div> -->
+    <p class="mb-6 text-[#111827] ">Already have an account? Log in <%= link_to 'here', new_user_session_path, class: 'border-b border-black text-[#111827] ' %></p>
+    <div class="actions">
+      <%= f.submit "Create account", class: 'w-[100%] bg-[#4F46E5] h-[38px] rounded-md text-[#fff] ' %>
+    </div>
+  <% end %>
+  </div>
+</div>
