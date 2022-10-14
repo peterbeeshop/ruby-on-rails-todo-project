@@ -1,10 +1,10 @@
-<div class="flex justify-center items-center flex-col min-h-screen">
+<div class="flex justify-center items-center w-[100%] flex-col min-h-screen">
   <%= image_tag 'logo.png', class:"mb-4" %>
   <h1 class="font-bold text-3xl mb-4 not-italic ">Reset your password</h1>
 
   <div class="bg-[#ffffff] shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.6)] w-[448px] h-[192px] px-[40px] py-[32px] rounded-lg ">
 
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post },data: { turbo: false }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field mb-6">

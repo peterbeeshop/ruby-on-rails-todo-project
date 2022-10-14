@@ -1,4 +1,4 @@
-<div class="bg-yellow-700 h-screen w-[70%] pt-5 pl-16 pr-5 overflow-auto">
+<div class="h-screen w-[70%] pt-5 pl-16 pr-5 overflow-auto">
   <div class="flex pt-4 mb-2 items-center">
     <%= image_tag 'arrow.png', class:"w-[18px] h-[14px] " %>
     <%= link_to "Back to all tasks", :back, class:"text-lg font-medium pl-4" %>
@@ -20,8 +20,12 @@
         <p class="pl-2 text-xs font-normal text-[#6B7280]">Comment <%= Comment.where(task_id: @task.id).count %></p>
       </section>
       <section>
-        <%= link_to "Edit", edit_task_path(@task), class:"rounded-md text-sm font-medium shadow-[0px_1px_2px_rgba(0,0,0,0.5)] w-[60px] h-[38px] text-[#374151] py-[9px] px-[17px] bg-[#ffffff] " %>
+        <!-- <%= button_to "Delete task", @task, method: :delete %> -->
+        <%= button_to(image_tag('delete.png'), @task, method: :delete, class:"w-[20px]  ")%>
       </section>
+      <!-- <section>
+        <%= link_to "Edit", edit_task_path(@task), class:"rounded-md text-sm font-medium shadow-[0px_1px_2px_rgba(0,0,0,0.5)] w-[60px] h-[38px] text-[#374151] py-[9px] px-[17px] bg-[#ffffff] " %>
+      </section> -->
     </div>
   </div>
 

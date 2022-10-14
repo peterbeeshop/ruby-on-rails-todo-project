@@ -4,7 +4,6 @@
         <%= image_tag 'arrow.png', class:"w-[18px] h-[14px] " %>
         <%= link_to "Back to all tasks", :back, class:"text-lg font-medium pl-4" %>
       </div>
-     
       <div class="pt-[70px]">
         <h2 class="mt-[-50px] mb-1 text-lg font-medium ">Pending</h2>
         <%= render "form", task: @task %>
